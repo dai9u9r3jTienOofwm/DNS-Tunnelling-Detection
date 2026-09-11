@@ -1,14 +1,27 @@
-# DNS Tunneling Detection b?ng ML v� 1D-CNN
+# Phát Hiện DNS Tunneling Bằng Machine Learning Và 1D-CNN
 
-## C�i d?t
-`pip install -r requirements.txt`
+## 1. Cài đặt môi trường
+Chạy lệnh sau để cài đặt các thư viện cần thiết:
+```bash
+pip install -r requirements.txt
+2. Dữ liệu
+Tải dữ liệu từ repository: https://github.com/aasthac67/DNS-Tunneling-Detection/tree/main/Tool và lưu vào thư mục data/raw/.
 
-## D? li?u
-T?i d? li?u t? `https://github.com/aasthac67/DNS-Tunneling-Detection/tree/main/Tool` v�o `data/raw`. Chu?n h�a th�nh CSV c� hai c?t b?t bu?c: `domain` v� `label` (0/1), r?i luu th�nh `data/processed/train.csv`.
+Chuẩn hóa dữ liệu thành định dạng CSV gồm 2 cột bắt buộc:
 
-## Ch?y
-`python run.py --data data/processed/train.csv`
+domain: Tên miền cần phân tích.
 
-D? do�n t?c th�: `python predict.py suspicious.example.com`
+label: Nhãn phân loại (0 cho tên miền hợp lệ, 1 cho DNS Tunneling).
 
-��nh gi�: `python -m src.evaluate --data data/processed/test.csv`
+Lưu file đã xử lý vào đường dẫn: data/processed/train.csv.
+
+3. Chạy chương trình
+Huấn luyện mô hình
+Bash
+python run.py --data data/processed/train.csv
+Dự đoán nhanh tên miền
+Bash
+python predict.py suspicious.example.com
+Đánh giá mô hình
+Bash
+python -m src.evaluate --data data/processed/test.csv
